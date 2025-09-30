@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFC107"
+    tools:context=".Login">
+
+    <Button
+        android:id="@+id/login_confirm"
+        android:layout_width="284dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="64dp"
+        android:backgroundTint="#0F0E0E"
+        android:text="LOGIN"
+        app:layout_constraintBottom_toTopOf="@+id/voltar_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+
+    <Button
+        android:id="@+id/voltar_login"
+        android:layout_width="284dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="65dp"
+        android:backgroundTint="#0F0E0E"
+        android:text="LOGIN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_confirm" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="262dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="75dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login_confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Senha"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="539dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Gmail"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="449dp" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="261dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="73dp"
+        tools:layout_editor_absoluteY="468dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="394dp"
+        android:layout_height="346dp"
+        app:srcCompat="@drawable/sigma_logo"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="32dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

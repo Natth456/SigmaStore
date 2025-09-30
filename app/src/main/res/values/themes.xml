@@ -6,13 +6,4 @@
     </style>
 
     <style name="Theme.SigmaStore" parent="Base.Theme.SigmaStore" />
-
-    <style name="Theme.SigmaStore.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.SigmaStore.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.SigmaStore.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

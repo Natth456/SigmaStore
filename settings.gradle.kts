@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Sigma-Store"
+rootProject.name = "SigmaStore"
 include(":app")
+ 

@@ -1,10 +1,6 @@
-package com.example.sigma_store;
+package com.example.sigmastore;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,15 +19,6 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
-        Button botao = findViewById(R.id.button);  // Find the button by its ID
-        botao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // When the button is clicked, navigate to MainScreen activity
-                Intent intent = new Intent(MainActivity.this, MainScreen.class);
-                startActivity(intent);  // Start the MainScreen activity
-            }
         });
     }
 }

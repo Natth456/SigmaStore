@@ -1,4 +1,4 @@
-package com.example.sigma_store;
+package com.example.sigmastore;
 
 import org.junit.Test;
 
