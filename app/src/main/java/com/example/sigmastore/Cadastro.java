@@ -36,7 +36,7 @@ public class Cadastro extends AppCompatActivity {
             boolean isAdm = swAdm.isChecked();
 
             if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
-                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -55,7 +55,7 @@ public class Cadastro extends AppCompatActivity {
                         startActivity(new Intent(Cadastro.this, Login.class));
                         finish();
                     } else {
-                        Toast.makeText(this, "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Erro ao cadastrar usuário", Toast.LENGTH_SHORT).show();
                     }
                 });
             }).start();

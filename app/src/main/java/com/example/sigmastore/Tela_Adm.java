@@ -43,7 +43,7 @@ public class Tela_Adm extends AppCompatActivity {
             String precoStr = edtPreco.getText().toString().trim();
 
             if (nome.isEmpty() || qtdStr.isEmpty() || precoStr.isEmpty()) {
-                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 return;
             }
 

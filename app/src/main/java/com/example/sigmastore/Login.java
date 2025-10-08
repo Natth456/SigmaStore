@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
             String senha = edtSenha.getText().toString().trim();
 
             if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
-                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity {
                         }
                         finish();
                     } else {
-                        Toast.makeText(this, "Usuário ou senha inválidos!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Usuário ou senha inválidos", Toast.LENGTH_SHORT).show();
                     }
                 });
             }).start();

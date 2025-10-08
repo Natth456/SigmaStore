@@ -67,7 +67,7 @@ public class Tela_Principal extends AppCompatActivity {
         });
 
         if (listaProdutos.isEmpty()) {
-            Toast.makeText(this, "Nenhum produto cadastrado!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Nenhum produto cadastrado", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -157,7 +157,7 @@ public class Tela_Principal extends AppCompatActivity {
         builder.setMessage(nota.toString());
         builder.setPositiveButton("OK", (dialog, which) -> {
             carrinho.clear();
-            Toast.makeText(this, "Compra finalizada!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Compra finalizada", Toast.LENGTH_SHORT).show();
         });
         builder.setNegativeButton("Cancelar", null);
         builder.show();
