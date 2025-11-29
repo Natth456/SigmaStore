@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 public class Tela_Principal extends AppCompatActivity {
@@ -21,12 +19,13 @@ public class Tela_Principal extends AppCompatActivity {
 
     ArrayList<Produto> listaProdutos = new ArrayList<>();
     ArrayList<Produto> carrinho = new ArrayList<>();
-    ProdutoDAO produtoDAO = new ProdutoDAO();
+
+    ProdutoDAO produtoDAO;
 
     ArrayAdapter<String> adapter;
 
-    private String usuarioNome = "João da Silva";
-    private String usuarioCpf = "123.456.789-00";
+    private String usuarioNome = "";
+    private String usuarioCpf = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +35,8 @@ public class Tela_Principal extends AppCompatActivity {
         listViewProdutos = findViewById(R.id.Produtos);
         btnCarrinho = findViewById(R.id.carrinho);
         btnVoltar = findViewById(R.id.voltar_tela);
+
+        produtoDAO = new ProdutoDAO(this);
 
         Intent it = getIntent();
         if (it != null) {
@@ -88,10 +89,13 @@ public class Tela_Principal extends AppCompatActivity {
 
         builder.setPositiveButton("Adicionar", (dialog, which) -> {
             if (produto.getQuantidade() > 0) {
+
                 carrinho.add(produto);
+
                 int novoEstoque = produto.getQuantidade() - 1;
                 produto.setQuantidade(novoEstoque);
-                boolean ok = atualizarEstoqueBanco(produto);
+
+                boolean ok = produtoDAO.atualizarEstoque(produto.getId(), novoEstoque);
 
                 if (!ok) {
                     produto.setQuantidade(novoEstoque + 1);
@@ -105,27 +109,16 @@ public class Tela_Principal extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
                 Toast.makeText(this, "Adicionado ao carrinho", Toast.LENGTH_SHORT).show();
+
             } else {
                 Toast.makeText(this, "Produto esgotado", Toast.LENGTH_SHORT).show();
             }
         });
+
         builder.setNegativeButton("Cancelar", null);
         builder.show();
     }
 
-    private boolean atualizarEstoqueBanco(Produto produto) {
-        String sql = "UPDATE produtos SET estoque = ? WHERE id = ?";
-        try (Connection conn = Conn_Banco.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, produto.getQuantidade());
-            stmt.setInt(2, produto.getId());
-            int affected = stmt.executeUpdate();
-            return affected > 0;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
     private void emitirNotaFiscal() {
         if (carrinho.isEmpty()) {
@@ -155,11 +148,32 @@ public class Tela_Principal extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Nota Fiscal");
         builder.setMessage(nota.toString());
-        builder.setPositiveButton("OK", (dialog, which) -> {
+
+        builder.setPositiveButton("Finalizar Compra", (dialog, which) -> {
             carrinho.clear();
             Toast.makeText(this, "Compra finalizada", Toast.LENGTH_SHORT).show();
         });
-        builder.setNegativeButton("Cancelar", null);
+
+        builder.setNegativeButton("Cancelar Pedido", (dialog, which) -> {
+
+            for (Produto p : carrinho) {
+                int estoqueAnterior = p.getQuantidade() + 1;
+                p.setQuantidade(estoqueAnterior);
+                produtoDAO.atualizarEstoque(p.getId(), estoqueAnterior);
+            }
+
+            carrinho.clear();
+
+            listaProdutos = produtoDAO.listarProdutos();
+            adapter.clear();
+            adapter.addAll(getNomesProdutos());
+            adapter.notifyDataSetChanged();
+
+            Toast.makeText(this, "Pedido cancelado. Estoque restaurado.", Toast.LENGTH_SHORT).show();
+        });
+
+        builder.setNeutralButton("Fechar", null);
+
         builder.show();
     }
 }

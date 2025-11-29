@@ -1,5 +1,6 @@
 package com.example.sigmastore;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -33,9 +34,14 @@ public class Tela_Adm extends AppCompatActivity {
         btnVoltar = findViewById(R.id.voltar_adm);
         btnAdicionar = findViewById(R.id.adicionar_produto);
         listaProdutos = findViewById(R.id.lista_produtos_adm);
+        produtoDAO = new ProdutoDAO(this);
 
-        produtoDAO = new ProdutoDAO();
         carregarProdutos();
+
+        listaProdutos.setOnItemClickListener((parent, view, position, id) -> {
+            Produto selecionado = produtos.get(position);
+            mostrarDialogoExcluir(selecionado);
+        });
 
         btnAdicionar.setOnClickListener(v -> {
             String nome = edtNome.getText().toString().trim();
@@ -92,5 +98,28 @@ public class Tela_Adm extends AppCompatActivity {
         edtNome.setText("");
         edtQtd.setText("");
         edtPreco.setText("");
+    }
+    private void mostrarDialogoExcluir(Produto produto) {
+        new AlertDialog.Builder(this)
+                .setTitle("Excluir Produto")
+                .setMessage("Deseja realmente excluir o produto:\n\n" +
+                        produto.getNome() + " ?")
+                .setPositiveButton("Excluir", (dialog, which) -> excluirProduto(produto))
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+    private void excluirProduto(Produto produto) {
+        new Thread(() -> {
+            boolean sucesso = produtoDAO.excluirProduto(produto.getId());
+
+            runOnUiThread(() -> {
+                if (sucesso) {
+                    Toast.makeText(this, "Produto excluído", Toast.LENGTH_SHORT).show();
+                    carregarProdutos();
+                } else {
+                    Toast.makeText(this, "Erro ao excluir produto", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }).start();
     }
 }
