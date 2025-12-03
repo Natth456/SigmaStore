@@ -9,15 +9,10 @@ import java.util.ArrayList;
 public class ProdutoDAO {
 
     private DatabaseHelper dbHelper;
-
-    // Recebe o contexto da Activity
     public ProdutoDAO(Context context) {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // ==============================
-    // CADASTRAR PRODUTO
-    // ==============================
     public boolean cadastrarProduto(Produto produto) {
         SQLiteDatabase db = null;
         try {
@@ -40,10 +35,6 @@ public class ProdutoDAO {
             if (db != null && db.isOpen()) db.close();
         }
     }
-
-    // ==============================
-    // LISTAR PRODUTOS
-    // ==============================
     public ArrayList<Produto> listarProdutos() {
         ArrayList<Produto> lista = new ArrayList<>();
         SQLiteDatabase db = null;

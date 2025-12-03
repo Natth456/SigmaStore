@@ -46,13 +46,21 @@ public class Cadastro extends AppCompatActivity {
             String senha = edtSenha.getText().toString().trim();
             int isAdm = swAdm.isChecked() ? 1 : 0;
 
-
             if (nome.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
                 Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-
+            try {
+                Long.parseLong(cpf);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "O CPF deve conter apenas números", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (cpf.length() != 11) {
+                Toast.makeText(this, "O CPF deve ter exatamente 11 dígitos", Toast.LENGTH_SHORT).show();
+                return;
+            }
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("nome", nome);
@@ -60,12 +68,12 @@ public class Cadastro extends AppCompatActivity {
             values.put("senha", senha);
             values.put("isAdm", isAdm);
 
-
             long id = db.insert("usuarios", null, values);
+
             if (id == -1) {
                 Toast.makeText(this, "Erro ao cadastrar (CPF pode já existir)", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Usuário cadastrado com sucesso", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Usuário cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

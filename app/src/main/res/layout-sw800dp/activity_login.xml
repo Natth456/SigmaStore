@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFC107"
+    tools:context=".Login">
+
+    <Button
+        android:id="@+id/login_confirm"
+        android:layout_width="604dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="58dp"
+        android:backgroundTint="#0F0E0E"
+        android:text="LOGIN"
+        app:layout_constraintBottom_toTopOf="@+id/voltar_login"
+        app:layout_constraintEnd_toStartOf="@+id/senha_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/voltar_login"
+        android:layout_width="604dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="103dp"
+        android:layout_marginEnd="660dp"
+        android:layout_marginBottom="88dp"
+        android:backgroundTint="#0F0E0E"
+        android:text="VOLTAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_confirm" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="311dp"
+        android:layout_height="293dp"
+        android:layout_marginStart="139dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="228dp"
+        app:layout_constraintEnd_toStartOf="@+id/Login_CPF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sigma_logo" />
+
+    <EditText
+        android:id="@+id/Login_CPF"
+        android:layout_width="530dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="71dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="554dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="NOME"
+        app:layout_constraintBottom_toTopOf="@+id/Login_Nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/Login_Nome"
+        android:layout_width="530dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="71dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="566dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="CPF"
+        app:layout_constraintBottom_toTopOf="@+id/Login_CPF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/Login_Nome" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="554dp"
+        android:layout_marginBottom="9dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="Senha"
+        app:layout_constraintBottom_toTopOf="@+id/senha_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login_confirm"
+        app:layout_constraintTop_toBottomOf="@+id/Login_CPF" />
+
+    <EditText
+        android:id="@+id/senha_login"
+        android:layout_width="530dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="227dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login_confirm"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

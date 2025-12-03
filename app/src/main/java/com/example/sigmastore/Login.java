@@ -92,13 +92,13 @@ public class Login extends AppCompatActivity {
                         // Aviso ao usuário (não mostrar senha em produção; só para debug local)
                         new AlertDialog.Builder(this)
                                 .setTitle("CPF encontrado")
-                                .setMessage("Existe um usuário com esse CPF (id=" + foundId + ", nome=" + foundNome + ").\nVerifique a senha.")
+                                .setMessage("Existe um usuário com esse CPF (id=" + foundId + ", nome=" + foundNome + ").\nVerifique a senha")
                                 .setPositiveButton("OK", null)
                                 .show();
                     } else {
                         new AlertDialog.Builder(this)
                                 .setTitle("Não encontrado")
-                                .setMessage("Não existe usuário com esse CPF registrado. Deseja ver a lista de usuários para debug?")
+                                .setMessage("Não existe usuário com esse CPF registrado")
                                 .setNegativeButton("OK", null)
                                 .show();
                     }
